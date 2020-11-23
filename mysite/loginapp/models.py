@@ -9,8 +9,8 @@ class Question(models.Model):
         simple=1
         hard=2
     
-    # def __str__(self):
-    #     return self.qid + self.sub
+    def __str__(self):
+        return self.sub
 
     diff = models.IntegerField(choices=Diff.choices)
     class Meta:
