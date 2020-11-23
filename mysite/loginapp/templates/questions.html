@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IndexPage</title>
+</head>
+<body>
+    {% comment %} <h1>Welcome to Question Paper Generator</h1><br>
+    <form action="generatePaper" method="POST">
+        {% csrf_token %}
+        <button type="submit">Generate Paper</button>
+    </form>
+    <form>
+        {% csrf_token %}
+        <button type="submit">Add Questions</button>
+    </form> {% endcomment %}
+    {{ques}}
+    
+</body>
+</html>

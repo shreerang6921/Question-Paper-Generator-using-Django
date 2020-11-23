@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Paper</title>
+</head>
+<body>
+    <form action="/about" method="POST">
+        {% csrf_token %}
+        <p>Enter the number of Quesitons to be chosen Randomly:</p><br>
+        <input name="noOfQues" type="number"><br><br><br>
+        <p>Enter Your Quesitons Here</p><br>
+        <textarea name="ques1" style="margin: 0px; width: 1403px; height: 57px;"></textarea>
+        <button type="submit">Submit Quesitons</button>
+    </form>
+</body>
+</html>
