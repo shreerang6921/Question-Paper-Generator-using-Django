@@ -14,8 +14,8 @@
         {% csrf_token %}
         <button type="submit">Add Questions</button>
     </form> {% endcomment %}
-
-    {{ques.0.ques}}<br>
-    {{ques.1.ques}}
-</body>
+    {%for i in questions%}
+    <li>{{i.ques}}</li>
+    <br>
+    {%endfor%}
 </html>
