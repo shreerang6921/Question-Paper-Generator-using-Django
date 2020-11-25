@@ -5,7 +5,7 @@ import random
 
 
 def index(request):
-    ques = Question.objects.all()
-    params = {'ques':ques}
-    print(ques)
-    return render(request, 'questions.html', params)
+    questions = Question.objects.all()
+    params = {'questions':questions}
+    print(questions[1].ques)
+    return render(request, 'question.html', params)
