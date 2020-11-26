@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>IndexPage</title>
+    <title>Welcome</title>
 </head>
 <body>
     <h1>Welcome to Question Paper Generator</h1><br>
@@ -10,7 +10,7 @@
         {% csrf_token %}
         <button type="submit">Generate Paper</button>
     </form>
-    <form>
+    <form action="addQuestion" method="POST">
         {% csrf_token %}
         <button type="submit">Add Questions</button>
     </form>
