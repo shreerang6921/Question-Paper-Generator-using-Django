@@ -63,10 +63,43 @@ def getQuestion(request):
     questionBan.sem = request.POST.get('sem', 0)
     questionBan.year = request.POST.get('year', 0)
     questionBan.subname = request.POST.get('subname', 'default')
-    
     questionBan.save()
     print(questionBan.subname)
     return render(request, 'getQuestion.html')
+
+def delete(request):
+    return render(request, 'delete.html')
+
+def deleteQuestion(request):
+    year = request.POST.get('year')
+    subname = request.POST.get('subname')
+    chapter = request.POST.get('chapter')
+
+    if year=='' and subname=='' and chapter=='':
+        a = questionBank.objects.all()
+    elif year=='' and subname=='':
+        a = questionBank.objects.filter(chapter=chapter)
+    elif subname=='' and chapter=='':
+        a = questionBank.objects.filter(year=year)
+    elif year=='' and chapter=='':
+        a = questionBank.objects.filter(subname=subname)
+    elif chapter=='':
+        a = questionBank.objects.filter(year=year, subname=subname)
+    elif year=='':
+        a = questionBank.objects.filter(subname=subname, chapter=chapter)
+    elif subname=='L':
+        a = questionBank.objects.filter(year=year, chapter=chapter)
+    else:
+        a = questionBank.objects.filter(year=year, subname=subname, chapter=chapter)
+
+    print(a)
+    params = {"a":a, "subname":subname, "year": year, "chapter":chapter}
+    return render(request, 'deleteQuestion.html', params)
+
+def deleteSuccess(request):
+    id = request.GET.get('idtodelete')
+    questionBank.objects.filter(id=id).delete()
+    return render(request, 'deleteSuccess.html')
 
 def displayQuestionBank(request):
     questionBank = questionBank.objects.all()
