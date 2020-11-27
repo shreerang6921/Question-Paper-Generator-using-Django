@@ -53,7 +53,7 @@ def about(request):
 def addQuestion(request):
     return render(request, 'addQuestion.html')
 
-def getQuestion(request):
+def addSuccess(request):
     questionBan = questionBank()
     questionBan.question = request.POST.get('question', 'default')
     questionBan.chapter = request.POST.get('chapter', 0)
@@ -65,7 +65,7 @@ def getQuestion(request):
     questionBan.subname = request.POST.get('subname', 'default')
     questionBan.save()
     print(questionBan.subname)
-    return render(request, 'getQuestion.html')
+    return render(request, 'addSuccess.html')
 
 def delete(request):
     return render(request, 'delete.html')
@@ -114,3 +114,9 @@ def displayQuestionBank(request):
     return render(request, 'showQuestions')
 
 # def generatePaper(request):
+#     subname = request.POST.get('subname')
+#     chapterstoinclude = request.POST.get('chapter')
+#     marks = request.POST.get('marks')
+#     time = request.POST.get('time')
+#     totalQuestions = request.POST.get('ques')
+    

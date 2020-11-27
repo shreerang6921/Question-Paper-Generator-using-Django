@@ -9,7 +9,7 @@ urlpatterns = [
     path('about',views.about,name='about'),
     path('loginapp/', include('loginapp.urls')),
     path('addQuestion',views.addQuestion, name='addQuestion'),
-    path('getQuestion',views.getQuestion, name='getQuestion'),
+    path('addSuccess',views.addSuccess, name='addSuccess'),
     path('delete',views.delete, name='delete'),
     path('deleteQuestion',views.deleteQuestion, name='deleteQuestion'),
     path('deleteSuccess',views.deleteSuccess, name='deleteSuccess'),

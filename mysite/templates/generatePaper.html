@@ -6,13 +6,13 @@
     <title>Generate Paper</title>
 </head>
 <body>
-    <form action="/about">
+    <form action="generatePaper">
         {% csrf_token %}
-        <p>Enter the number of Quesitons to be chosen Randomly:</p><br>
-        <input name="noOfQues" type="number"><br><br><br>
+        <p>Enter the number Unit</p><br>
+        <input name="unit" type="number"><br><br><br>
         <p>Enter Your Quesitons Here</p><br>
         <textarea name="ques1" style="margin: 0px; width: 1403px; height: 57px;"></textarea>
-        <button type="submit">Submit Quesitons</button>
+        <button type="submit" >Submit Quesitons</button>
     </form>
 </body>
 </html>
