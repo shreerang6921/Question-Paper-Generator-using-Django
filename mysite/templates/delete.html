@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Questions</title>
+</head>
+<body>
+    <form action="deleteQuestion" method="POST">
+        {% csrf_token %}
+        Enter year:
+        <input type="number" name="year">
+        Enter subname:
+        <input type="text" name="subname">
+        Enter chapter:
+        <input type="number" name="chapter">
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
