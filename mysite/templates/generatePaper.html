@@ -1,18 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Generate Paper</title>
+    {% load static %}
+    <!-- <link rel="stylesheet" href="{%static 'css/style2.css'%}"/> -->
 </head>
 <body>
-    <form action="generatePaper">
-        {% csrf_token %}
-        <p>Enter the number Unit</p><br>
-        <input name="unit" type="number"><br><br><br>
-        <p>Enter Your Quesitons Here</p><br>
-        <textarea name="ques1" style="margin: 0px; width: 1403px; height: 57px;"></textarea>
-        <button type="submit" >Submit Quesitons</button>
-    </form>
+    <div class="middle">
+        <form action="pdf/paper.html">
+            <p>Select Year:</p>
+            <select id="Year" name="Year">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+            
+            <br>
+
+            <p>Select Units to Include:</p>
+            <input type="checkbox" id="1" name="1">
+            <label for="1">1</label><br>
+            <input type="checkbox" id="2" name="2">
+            <label for="2">2</label><br>
+            <input type="checkbox" id="3" name="3">
+            <label for="3">3</label><br>
+            <input type="checkbox" id="4" name="4">
+            <label for="4">4</label><br>
+            <input type="checkbox" id="5" name="5">
+            <label for="5">5</label><br>
+            <input type="checkbox" id="6" name="6">
+            <label for="6">6</label><br>
+            
+            <br>
+
+            <p>Subject:</p>
+            <input list="subjects" name="subject">
+            <datalist id="subjects">
+                <option value="ISEE">
+                <option value="DBMS">
+                <option value="DELD">
+                <option value="COA">
+                <option value="TOC">
+                <option value="DSA">
+                <option value="SEPM">
+                <option value="DM">
+            </datalist><br>
+
+            <br>
+
+            <label for="nques">Total No. of Questions</label><br>
+            <input type="number" id="nques" name="nques"><br>
+
+            <br>
+
+
+
+            <button class="glow-on-hover" type="submit">Generate Paper</button>
+            <input type="reset">
+        </form>
+    </div>
 </body>
 </html>

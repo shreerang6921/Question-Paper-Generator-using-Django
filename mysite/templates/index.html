@@ -3,20 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Welcome</title>
+    {% load static %}
+    <link rel="stylesheet" href="{%static 'css/style2.css'%}"/>
 </head>
 <body>
     <h1>Welcome to Question Paper Generator</h1><br>
     <form action="generatePaper" method="POST">
         {% csrf_token %}
-        <button type="submit">Generate Paper</button>
+        <button type="submit" class="glow-on-hover">Generate Paper</button>
     </form>
-    <form action="addQuestion" method="POST">
+    <form action="admin" method="POST">
         {% csrf_token %}
-        <button type="submit">Add Questions</button>
+        <button type="submit" class="glow-on-hover">Add Questions</button>
     </form>
     <form action="delete" method="POST">
         {% csrf_token %}
-        <button type="submit">Delete Question</button>
+        <button type="submit" class="glow-on-hover">Delete Question</button>
     </form>
     
 </body>

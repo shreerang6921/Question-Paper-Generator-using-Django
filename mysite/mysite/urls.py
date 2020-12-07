@@ -1,6 +1,8 @@
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls import url
 from mysite import views
+from .views import GeneratePdf
 
 urlpatterns = [
     path('admin', admin.site.urls),
@@ -13,4 +15,6 @@ urlpatterns = [
     path('delete',views.delete, name='delete'),
     path('deleteQuestion',views.deleteQuestion, name='deleteQuestion'),
     path('deleteSuccess',views.deleteSuccess, name='deleteSuccess'),
+    # path('generatePaper2', views.generatePaper2, name='generatePaper2'),
+    path('pdf/paper.html', GeneratePdf.as_view()),
 ]
