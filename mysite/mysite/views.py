@@ -3,7 +3,74 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from loginapp.models import questionBank
 import random
+from docx import Document
+import datetime
 
+import pdb
+
+from django.views.generic import View
+
+from mysite.utils import render_to_pdf #created in step 4
+
+class GeneratePdf(View):
+    def get(self, request, *args, **kwargs):
+        print('GenertePaperRequest2')
+        l = []
+        Year = request.GET.get('Year')
+        sub = request.GET.get('subject')
+        nques = request.GET.get('nques')
+
+        Year = int(Year)
+
+        unit_one = request.GET.get('1', '') == 'on'
+        if unit_one:
+            l.append(1)
+        unit_two = request.GET.get('2', '') == 'on'
+        if unit_two:
+            l.append(2)
+        unit_three = request.GET.get('3', '') == 'on'
+        if unit_three:
+            l.append(3)
+        unit_four = request.GET.get('4', '') == 'on'
+        if unit_four:
+            l.append(4)
+        unit_five = request.GET.get('5', '') == 'on'
+        if unit_five:
+            l.append(5)
+        unit_six = request.GET.get('6', '') == 'on'
+        if unit_six:
+            l.append(6)
+
+
+        a1 = questionBank.objects.filter(year=Year, subname=sub, unit=int(l[0]))
+        if len(l)>1:
+            a2 = questionBank.objects.filter(year=Year, subname=sub, unit=int(l[1]))
+        if len(l)>2:
+            a3 = questionBank.objects.filter(year=Year, subname=sub, unit=int(l[2]))
+        if len(l)>3:
+            a4 = questionBank.objects.filter(year=Year, subname=sub, unit=int(l[3]))
+        if len(l)>4:
+            a5 = questionBank.objects.filter(year=Year, subname=sub, unit=int(l[4]))
+        if len(l)>5:
+            a6 = questionBank.objects.filter(year=Year, subname=sub, unit=int(l[5]))
+
+        print(l)
+
+        final_list1 = []
+        z = 1
+        for i in a1:
+            k = "Q" + str(z) + ". " + i.question + " " + str(i.marks) + " marks"
+            final_list1.append(k)
+            z=z+1            
+
+        subject_name = sub
+        data = {
+            "a1":final_list1,
+            "title":subject_name,
+            "year":Year,
+        }
+        pdf = render_to_pdf('pdf/invoice.html', data)
+        return HttpResponse(pdf, content_type='application/pdf')
 
 def index(request):
     return render(request, 'index.html')
@@ -11,6 +78,52 @@ def index(request):
 def generatePaper(request):
     print('GenertePaperRequest')
     return render(request, 'generatePaper.html')
+
+# def generatePaper2(request):
+#     print('GenertePaperRequest2')
+#     l = []
+#     Year = request.POST.get('Year')
+#     sub = request.POST.get('subject')
+#     nques = request.POST.get('nques')
+
+#     Year = int(Year)
+
+#     unit_one = request.POST.get('1', '') == 'on'
+#     if unit_one:
+#         l.append(1)
+#     unit_two = request.POST.get('2', '') == 'on'
+#     if unit_two:
+#         l.append(2)
+#     unit_three = request.POST.get('3', '') == 'on'
+#     if unit_three:
+#         l.append(3)
+#     unit_four = request.POST.get('4', '') == 'on'
+#     if unit_four:
+#         l.append(4)
+#     unit_five = request.POST.get('5', '') == 'on'
+#     if unit_five:
+#         l.append(5)
+#     unit_six = request.POST.get('6', '') == 'on'
+#     if unit_six:
+#         l.append(6)
+
+
+#     a1 = questionBank.objects.filter(year=Year, subname=sub, unit=int(l[0]))
+#     if len(l)>1:
+#         a2 = questionBank.objects.filter(year=Year, subname=sub, unit=int(l[1]))
+#     if len(l)>2:
+#         a3 = questionBank.objects.filter(year=Year, subname=sub, unit=int(l[2]))
+#     if len(l)>3:
+#         a4 = questionBank.objects.filter(year=Year, subname=sub, unit=int(l[3]))
+#     if len(l)>4:
+#         a5 = questionBank.objects.filter(year=Year, subname=sub, unit=int(l[4]))
+#     if len(l)>5:
+#         a6 = questionBank.objects.filter(year=Year, subname=sub, unit=int(l[5]))
+
+#     print(l)
+
+#     params = {"a1":a1}
+#     return render(request, 'pdf/invoice.html', params)
 
 def about(request):
     mytext = request.POST.get('ques1', 'default')    #get the text from text box
@@ -32,7 +145,7 @@ def about(request):
     print(l)
     i = 0
     while i < int(noOfQues):
-        rand = random.choice(l)
+        rand = random.choice(3)
         if rand not in finalListOfQues:
             finalListOfQues.append(rand)
             i=i+1
@@ -113,10 +226,11 @@ def displayQuestionBank(request):
     params = {"ques":l}
     return render(request, 'showQuestions')
 
-# def generatePaper(request):
+# def generatePaper2(request):
 #     subname = request.POST.get('subname')
 #     chapterstoinclude = request.POST.get('chapter')
 #     marks = request.POST.get('marks')
 #     time = request.POST.get('time')
 #     totalQuestions = request.POST.get('ques')
+#     return render(request, 'generatePaper2.html')
     
