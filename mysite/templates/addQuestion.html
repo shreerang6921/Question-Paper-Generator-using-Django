@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Questions</title>
+</head>
+<body>
+    <form action='addSuccess' method="POST">
+        {% csrf_token %}
+        Enter question:
+        <input type="text" name="question"><br>
+        Enter chapter:
+        <input type="number" name="chapter"><br>
+        Enter difficulty:
+        <input type="number" name="difficulty"><br>
+        Enter marks:
+        <input type="number" name="marks"><br>
+        Enter unit:
+        <input type="number" name="unit"><br>
+        Enter sem:
+        <input type="number" name="sem"><br>
+        Enter year:
+        <input type="number" name="year"><br>
+        Enter subname:
+        <input type="text" name="subname"><br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

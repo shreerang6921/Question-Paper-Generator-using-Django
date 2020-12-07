@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Questions</title>
+</head>
+<body>
+    <form action="deleteSuccess">
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Question</th>
+                <th>Difficulty</th>
+                <th>Marks</th>
+                <th>Unit</th>
+            </tr>
+            {%for i in a%}
+            <tr>
+                <td>
+                    {{i.id}}
+                </td>
+                <td>
+                    {{i.question}}
+                </td>
+                <td>
+                    {{i.difficulty}}
+                </td>
+                <td>
+                    {{i.marks}}
+                </td>
+                <td>
+                    {{i.unit}}
+                </td>
+            </tr>
+            {%endfor%}
+        </table>
+        
+        Enter the id to delete:
+        <input type="number" name='idtodelete'><br>
+        <button type="submit">Submit</button>
+    </form>
+    
+</body>
+</html>

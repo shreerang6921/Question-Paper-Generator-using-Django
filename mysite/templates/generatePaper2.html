@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="pdf/paper.html">
+    {%for i in a1%}
+        {{i.question}}
+    {%endfor%}
+    <button type="submit">Export to DOC</button>
+    </form>
+</body>
+</html>

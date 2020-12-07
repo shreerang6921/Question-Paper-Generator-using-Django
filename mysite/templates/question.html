@@ -5,7 +5,7 @@
     <title>IndexPage</title>
 </head>
 <body>
-    <h1>Welcome to Question Paper Generator</h1><br>
+    {% comment %} <h1>Welcome to Question Paper Generator</h1><br>
     <form action="generatePaper" method="POST">
         {% csrf_token %}
         <button type="submit">Generate Paper</button>
@@ -13,7 +13,9 @@
     <form>
         {% csrf_token %}
         <button type="submit">Add Questions</button>
-    </form>
-    
-</body>
+    </form> {% endcomment %}
+    {%for i in questions%}
+    <li>{{i.ques}}</li>
+    <br>
+    {%endfor%}
 </html>

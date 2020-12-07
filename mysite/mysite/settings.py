@@ -1,4 +1,6 @@
 from pathlib import Path
+import os
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -18,6 +20,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -25,7 +28,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'loginapp', 
+    'loginapp',
+    'import_export',
 ]
 
 MIDDLEWARE = [
@@ -56,6 +60,8 @@ TEMPLATES = [
     },
 ]
 
+IMPORT_EXPORT_USE_TRANSACTIONS = True
+
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
 
@@ -72,7 +78,7 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'qsite',
+        'NAME': 'questionBank',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': '127.0.0.1',
@@ -118,3 +124,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
